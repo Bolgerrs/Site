@@ -1,0 +1,40 @@
+name: Preview Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: preview-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check required secrets
+        run: |
+          test -n "${{ secrets.MONTELAR_DEPLOY_HOST }}"
+          test -n "${{ secrets.MONTELAR_DEPLOY_USER }}"
+          test -n "${{ secrets.MONTELAR_DEPLOY_SSH_KEY }}"
+          test -n "${{ secrets.MONTELAR_DEPLOY_PATH }}"
+
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.MONTELAR_DEPLOY_HOST }}
+          username: ${{ secrets.MONTELAR_DEPLOY_USER }}
+          key: ${{ secrets.MONTELAR_DEPLOY_SSH_KEY }}
+          port: ${{ secrets.MONTELAR_DEPLOY_PORT }}
+          script_stop: true
+          script: |
+            set -euo pipefail
+            cd "${{ secrets.MONTELAR_DEPLOY_PATH }}"
+            OLD_SHA=$(git rev-parse HEAD)
+            git fetch origin main --prune
+            NEW_SHA=$(git rev-parse origin/main)
+            git reset --hard "$NEW_SHA"
+            git clean -fd --exclude=.env --exclude=apps/web/.env.local --exclude=apps/admin/.env.local
+            DEPLOY_DIFF_RANGE="$OLD_SHA..$NEW_SHA" bash scripts/deploy-if-dirty.sh
