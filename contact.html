@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Montelar</title>
+  <meta name="description" content="Связаться с Montelar: дилеры, прослушивание, консультация." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#050608;--text:#f4efe6;--muted:#9a958b;--accent:#c8b18a;--soft:#6a6560;--accent-dark:#a08a60;--line:rgba(255,255,255,.08);--serif:"Cormorant Garamond",Georgia,serif;--sans:"Inter",sans-serif}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--sans);font-weight:300;color:var(--text);background:var(--bg);line-height:1.6;letter-spacing:.01em}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1400px;margin:0 auto;padding:0 40px}
+    
+    /* HEADER */
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(5,6,8,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;height:80px}
+    .brand{display:flex;align-items:center;gap:12px;font-size:.85rem;font-weight:500;text-transform:uppercase;letter-spacing:.18em}
+    .brand span{font-family:var(--serif);letter-spacing:.05em}
+    .mark{width:28px;height:28px;border:1px solid rgba(255,255,255,.15);border-radius:50%;position:relative;background:radial-gradient(circle, rgba(200,177,138,.15), transparent)}
+    .mark::before,.mark::after{content:'';position:absolute;border:1px solid rgba(200,177,138,.5);border-radius:50%;inset:5px}
+    .mark::after{inset:10px;border-color:rgba(200,177,138,.7)}
+    .nav{display:flex;align-items:center;gap:40px;font-size:.85rem;font-weight:400;color:var(--muted)}
+    .nav a:hover,.nav a.active{color:var(--text)}
+    .nav a.active{border-bottom:1px solid var(--accent);padding-bottom:4px}
+    
+    .nav-item{position:relative}
+    .nav-item:hover .dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+    .dropdown{position:absolute;top:100%;left:-20px;background:#0a0d12;border:1px solid var(--line);padding:24px;min-width:320px;opacity:0;visibility:hidden;transform:translateY(10px);transition:.3s;z-index:100}
+    .dropdown a{display:block;padding:12px 0;border-bottom:1px solid var(--line);font-size:.9rem;color:var(--muted);transition:.25s}
+    .dropdown a:last-child{border:none}
+    .dropdown a:hover{color:var(--text);padding-left:8px}
+    .dropdown .col-name{font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:4px;display:block}
+    .dropdown .col-desc{font-size:.8rem;color:var(--soft)}
+    
+    .menu-toggle{display:none;background:none;border:none;color:var(--text);font-size:24px;cursor:pointer}
+    
+    /* PAGE HEADER */
+    .page-header{padding:160px 0 80px;text-align:center}
+    .page-header .eyebrow{font-size:.7rem;text-transform:uppercase;letter-spacing:.25em;color:var(--soft);margin-bottom:20px;display:block}
+    .page-header h1{font-family:var(--serif);font-size:clamp(3rem, 6vw, 5rem);font-weight:400;margin-bottom:28px;line-height:1.1}
+    .page-header p{max-width:600px;margin:0 auto;color:var(--muted);font-size:1.08rem;line-height:1.7}
+    
+    /* SECTIONS */
+    .section{padding:80px 0}
+    .section-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.25em;color:var(--soft);margin-bottom:16px;display:block}
+    
+    /* CARDS GRID */
+    .cards-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:30px;margin-bottom:60px}
+    .card{background:#0a0d12;border:1px solid var(--line);padding:40px}
+    .card h3{font-family:var(--serif);font-size:1.5rem;margin-bottom:16px}
+    .card p{color:var(--muted);margin-bottom:16px;font-size:.95rem}
+    .card a{color:var(--accent);font-size:.9rem}
+    .card a:hover{text-decoration:underline}
+    
+    /* GRID 2 */
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+    .card-full{background:#0a0d12;border:1px solid var(--line);padding:48px}
+    .card-full h2{font-family:var(--serif);font-size:2rem;margin-bottom:24px}
+    
+    /* FORM */
+    .form{display:flex;flex-direction:column;gap:16px}
+    .input{padding:16px 20px;background:#050608;border:1px solid var(--line);color:var(--text);font-family:var(--sans);font-size:.95rem;border-radius:4px}
+    .input::placeholder{color:var(--soft)}
+    .input:focus{outline:none;border-color:var(--accent)}
+    textarea.input{min-height:140px;resize:vertical}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 32px;border-radius:4px;font-size:.9rem;font-weight:500;cursor:pointer;transition:.25s}
+    .btn-primary{background:var(--accent);color:#050608;border:1px solid var(--accent)}
+    .btn-primary:hover{background:#dcc090}
+    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--text)}
+    .btn-outline:hover{border-color:var(--accent)}
+    
+    /* INFO BOX */
+    .info-box{background:rgba(255,255,255,.02);border:1px solid var(--line);padding:28px;border-radius:4px;margin-top:32px}
+    .info-box h4{font-size:.85rem;text-transform:uppercase;letter-spacing:.15em;color:var(--soft);margin-bottom:16px}
+    .info-box ul{list-style:none;padding:0}
+    .info-box li{color:var(--muted);padding:8px 0;border-bottom:1px solid var(--line);font-size:.92rem}
+    .info-box li:last-child{border:none}
+    
+    /* WORK TIME */
+    .work-time{margin-top:32px;padding:24px;background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:4px}
+    .work-time p{font-size:.9rem;color:var(--muted);margin:0}
+    .work-time strong{color:var(--text)}
+    
+    /* DEALERS */
+    .dealers-grid{display:grid;grid-template-columns:repeat(2, 1fr);gap:30px;margin-bottom:60px}
+    .dealer-card{background:#0a0d12;border:1px solid var(--line);padding:36px}
+    .dealer-card .tag{display:inline-block;font-size:.65rem;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:12px}
+    .dealer-card h3{font-size:1.2rem;margin-bottom:8px}
+    .dealer-card p{color:var(--muted);font-size:.9rem;margin-bottom:8px}
+    .dealer-card a{color:var(--accent);font-size:.9rem}
+    
+    /* CTA */
+    .cta-section{background:#0a0d12;border:1px solid var(--line);padding:80px;text-align:center;border-radius:4px}
+    .cta-section h3{font-family:var(--serif);font-size:2.2rem;font-weight:400;margin-bottom:20px}
+    .cta-section p{color:var(--muted);margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto}
+    
+    /* FOOTER */
+    footer{background:#030405;border-top:1px solid var(--line);padding:60px 0 40px}
+    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+    .footer-brand{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+    .footer-brand .brand{font-size:.8rem}
+    .footer-about{font-size:.9rem;color:var(--muted);line-height:1.7;max-width:280px}
+    .footer h5{font-size:.8rem;text-transform:uppercase;letter-spacing:.15em;margin-bottom:20px;color:var(--soft)}
+    .footer-links{display:flex;flex-direction:column;gap:12px}
+    .footer-links a{font-size:.88rem;color:var(--muted)}
+    .footer-links a:hover{color:var(--text)}
+    .footer-bottom{text-align:center;padding-top:30px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted)}
+    
+    /* ANIMATIONS */
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    .page-header>*{opacity:0;animation:fadeInUp .8s ease forwards}
+    .page-header>*:nth-child(1){animation-delay:.1s}
+    .page-header>*:nth-child(2){animation-delay:.2s}
+    .page-header>*:nth-child(3){animation-delay:.35s}
+    
+    .card,.dealer-card{opacity:0;animation:fadeInUp .6s ease forwards}
+    .cards-grid .card:nth-child(1){animation-delay:.1s}
+    .cards-grid .card:nth-child(2){animation-delay:.2s}
+    .cards-grid .card:nth-child(3){animation-delay:.3s}
+    .dealers-grid .dealer-card:nth-child(1){animation-delay:.1s}
+    .dealers-grid .dealer-card:nth-child(2){animation-delay:.2s}
+    
+    .card,.dealer-card,.btn{transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+    .card:hover,.dealer-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.3)}
+    .btn-primary:hover{background:#dcc090;transform:translateY(-2px)}
+    .btn-outline:hover{border-color:var(--accent);background:rgba(255,255,255,.05)}
+    .card a:hover,.dealer-card a:hover{color:#dcc090}
+    .footer-links a{transition:color .25s ease}
+    .footer-links a:hover{color:var(--text)}
+    
+    /* RESPONSIVE */
+    @media(max-width:1100px){
+      .nav{display:none}
+      .menu-toggle{display:block}
+      .cards-grid{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+      .dealers-grid{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:768px){
+      .container{padding:0 24px}
+      .page-header{padding:140px 0 50px}
+      .section{padding:50px 0}
+      .cta-section{padding:40px 24px}
+      .card{padding:28px}
+      .footer-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand">
+        <span class="mark"></span>
+        <span>Montelar</span>
+      </a>
+      
+      <nav class="nav">
+        <div class="nav-item">
+          <a href="products.html">Products</a>
+          <div class="dropdown">
+            <a href="product-monolith.html"><span class="col-name">Monolith</span><span class="col-desc">Reference — флагман</span></a>
+            <a href="product-linea.html"><span class="col-name">Linea & Signal</span><span class="col-desc">Premium — баланс</span></a>
+            <a href="product-arc.html"><span class="col-name">Arc & Meridian</span><span class="col-desc">Classic — вход в high-end</span></a>
+            <a href="product-cables.html"><span class="col-name">Cables</span><span class="col-desc">Кабели и аксессуары</span></a>
+          </div>
+        </div>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+      
+      <button class="menu-toggle">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="page-header">
+      <div class="container">
+        <span class="eyebrow">Contact</span>
+        <h1>Начните<br>с разговора</h1>
+        <p>Montelar лучше всего раскрывается через прослушивание. Свяжитесь с нами для демонстрации, консультации или партнёрства.</p>
+      </div>
+    </section>
+
+    <!-- CONTACTS GRID -->
+    <section class="section">
+      <div class="container">
+        <div class="cards-grid">
+          <div class="card">
+            <span class="section-label">Information</span>
+            <h3>Общие вопросы</h3>
+            <p>Продукция, цены, наличие</p>
+            <a href="mailto:info@montelar.audio">info@montelar.audio</a>
+          </div>
+          
+          <div class="card">
+            <span class="section-label">Dealers</span>
+            <h3>Дилеры и партнёры</h3>
+            <p>Продажа, установка, сервис</p>
+            <a href="mailto:retail@montelar.audio">retail@montelar.audio</a>
+          </div>
+          
+          <div class="card">
+            <span class="section-label">Experience</span>
+            <h3>Прослушивания</h3>
+            <p>Запись на демонстрацию</p>
+            <a href="mailto:listening@montelar.audio">listening@montelar.audio</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORM -->
+    <section class="section">
+      <div class="container">
+        <div class="grid-2">
+          <div class="card-full">
+            <span class="section-label">Send Message</span>
+            <h2>Отправить запрос</h2>
+            
+            <form class="form" onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами в ближайшее время.');">
+              <input class="input" type="text" placeholder="Ваше имя *" required />
+              <input class="input" type="email" placeholder="Email *" required />
+              <input class="input" type="text" placeholder="Телефон" />
+              <select class="input" style="color:var(--muted)">
+                <option value="">Тема запроса</option>
+                <option value="demo">Демонстрация</option>
+                <option value="purchase">Покупка</option>
+                <option value="dealer">Партнёрство</option>
+                <option value="other">Другое</option>
+              </select>
+              <textarea class="input" placeholder="Ваше сообщение"></textarea>
+              <button class="btn btn-primary" type="submit" style="margin-top:8px">Отправить</button>
+            </form>
+          </div>
+          
+          <div>
+            <h3 style="font-family:var(--serif);font-size:1.8rem;margin-bottom:20px">Как мы работаем</h3>
+            <p style="color:var(--muted);margin-bottom:20px;line-height:1.7">Для бренда такого класса контакт должен быть персональным, спокойным и точным.</p>
+            
+            <div class="info-box">
+              <h4>Рекомендуем</h4>
+              <ul>
+                <li>Частные демонстрации по предварительной записи</li>
+                <li>Персональная консультация по конфигурации системы</li>
+                <li>Работа через авторизованных дилеров</li>
+                <li>Индивидуальные проекты под заказ</li>
+              </ul>
+            </div>
+            
+            <div class="work-time">
+              <p><strong>Время работы:</strong> Пн-Пт, 10:00-18:00 CET</p>
+              <p style="margin-top:8px"><strong>Ответим:</strong> в течение 24 часов</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEALERS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header" style="text-align:center;margin-bottom:50px">
+          <span class="section-label">Locate</span>
+          <h2 style="font-family:var(--serif);font-size:clamp(2rem, 4vw, 3rem);font-weight:400">Авторизованные дилеры</h2>
+          <p style="color:var(--muted);max-width:500px;margin:16px auto 0">Для приобретения и демонстрации обращайтесь к официальным партнёрам Montelar в вашем регионе.</p>
+        </div>
+        
+        <div class="dealers-grid">
+          <div class="dealer-card">
+            <span class="tag">Europe</span>
+            <h3>Центральный офис</h3>
+            <p>Швейцария / Европа</p>
+            <a href="mailto:europe@montelar.audio">europe@montelar.audio</a>
+          </div>
+          
+          <div class="dealer-card">
+            <span class="tag">Worldwide</span>
+            <h3>Международные продажи</h3>
+            <p>За пределами Европы</p>
+            <a href="mailto:international@montelar.audio">international@montelar.audio</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-section">
+          <span class="section-label">Montelar</span>
+          <h3>Точность в каждом контакте</h3>
+          <p>Напишите нам, если нужна консультация по бренду, подбор системы или информация о партнёрстве.</p>
+          <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap">
+            <a href="mailto:info@montelar.audio" class="btn btn-primary">Написать</a>
+            <a href="products.html" class="btn btn-outline">Коллекции</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <span class="mark"></span>
+            <span class="brand">Montelar</span>
+          </div>
+          <p class="footer-about">Montelar создаёт ultra-premium аудиокомпоненты с швейцарской точностью, архитектурной формой и долговечной ценностью.</p>
+        </div>
+        
+        <div>
+          <h5>Products</h5>
+          <div class="footer-links">
+            <a href="products.html">Monolith</a>
+            <a href="products.html">Linea & Signal</a>
+            <a href="products.html">Arc & Meridian</a>
+            <a href="products.html">Cables</a>
+          </div>
+        </div>
+        
+        <div>
+          <h5>Brand</h5>
+          <div class="footer-links">
+            <a href="about.html">About</a>
+            <a href="about.html">Technologies</a>
+            <a href="about.html">Craftsmanship</a>
+          </div>
+        </div>
+        
+        <div>
+          <h5>Contact</h5>
+          <div class="footer-links">
+            <a href="contact.html">Contact</a>
+            <a href="contact.html">Find a Dealer</a>
+            <a href="mailto:info@montelar.audio">info@montelar.audio</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2024 Montelar. All Rights Reserved. Architecture of Sound.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      document.querySelector('.nav').style.display = document.querySelector('.nav').style.display === 'flex' ? 'none' : 'flex';
+      document.querySelector('.nav').style.position = 'absolute';
+      document.querySelector('.nav').style.top = '80px';
+      document.querySelector('.nav').style.left = '0';
+      document.querySelector('.nav').style.right = '0';
+      document.querySelector('.nav').style.background = '#050608';
+      document.querySelector('.nav').style.padding = '20px';
+      document.querySelector('.nav').style.flexDirection = 'column';
+      document.querySelector('.nav').style.gap = '20px';
+    });
+  </script>
+</body>
+</html>

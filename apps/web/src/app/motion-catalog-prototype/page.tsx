@@ -1,0 +1,263 @@
+import { withLocale } from "@/config/site-routes";
+import { getLocaleCopy } from "@/lib/copy/site-copy";
+import { getRequestLocale } from "@/lib/request-locale";
+import { buildRouteMetadata } from "@/lib/seo/metadata";
+import { MotionCatalogPrototype } from "@/components/motion-catalog-prototype";
+import type { MotionCatalogDirection } from "@/components/motion-catalog-prototype";
+
+export async function generateMetadata() {
+  const locale = await getRequestLocale();
+
+  return buildRouteMetadata({
+    title: getLocaleCopy(locale, {
+      en: "The Montelar System motion study | Montelar",
+      de: "The Montelar System Bewegungsstudie | Montelar",
+      es: "Estudio de movimiento The Montelar System | Montelar",
+      fr: "Etude de mouvement The Montelar System | Montelar",
+      zh: "The Montelar System 动效研究 | Montelar",
+      ja: "The Montelar System モーションスタディ | Montelar",
+      ru: "The Montelar System - исследование движения | Montelar",
+    }),
+    description: getLocaleCopy(locale, {
+      en: "A quiet motion study for presenting Montelar directions as one cinematic product system.",
+      de: "Eine ruhige Bewegungsstudie, die Montelar Richtungen als ein kinematisches Produktsystem zeigt.",
+      es: "Un estudio de movimiento sereno para presentar las direcciones Montelar como un sistema cinematográfico.",
+      fr: "Une étude de mouvement calme pour présenter les directions Montelar comme un système cinématique.",
+      zh: "以安静的动效研究，将 Montelar 方向呈现为一个电影感产品系统。",
+      ja: "Montelarの各領域を一つのシネマティックな製品システムとして見せる静かなモーションスタディ。",
+      ru: "Спокойное исследование движения, где направления Montelar представлены как единая кинематографичная система.",
+    }),
+    path: "/motion-catalog-prototype",
+    locale,
+    robots: {
+      index: false,
+      follow: false,
+    },
+  });
+}
+
+export default async function MotionCatalogPrototypePage() {
+  const locale = await getRequestLocale();
+  const cta = getLocaleCopy(locale, {
+    en: "Open direction",
+    de: "Richtung öffnen",
+    es: "Abrir dirección",
+    fr: "Ouvrir la direction",
+    zh: "打开方向",
+    ja: "領域を開く",
+    ru: "Открыть направление",
+  });
+
+  const directions: MotionCatalogDirection[] = [
+    {
+      id: "vision",
+      indexLabel: "01",
+      label: "Vision MAX",
+      title: getLocaleCopy(locale, {
+        en: "Private cinema as an architectural event.",
+        de: "Privates Kino als architektonisches Ereignis.",
+        es: "Cine privado como acontecimiento arquitectónico.",
+        fr: "Cinéma privé comme événement architectural.",
+        zh: "作为建筑事件的私人影院。",
+        ja: "建築的な体験としてのプライベートシネマ。",
+        ru: "Приватное кино как архитектурное событие.",
+      }),
+      description: getLocaleCopy(locale, {
+        en: "Screen, projection, acoustics and room light resolve as one composed environment.",
+        de: "Leinwand, Projektion, Akustik und Raumlicht werden zu einer Umgebung.",
+        es: "Pantalla, proyección, acústica y luz de sala se resuelven como un entorno.",
+        fr: "Ecran, projection, acoustique et lumière de pièce forment un environnement.",
+        zh: "屏幕、投影、声学与空间光被组织为一个环境。",
+        ja: "スクリーン、投影、音響、室内光を一つの環境として構成します。",
+        ru: "Экран, проекция, акустика и свет комнаты собираются в одну среду.",
+      }),
+      href: withLocale("/vision-max", locale),
+      cta,
+      image: "/images/home/montelar-master-room-wide.webp",
+      material: getLocaleCopy(locale, { en: "Screen plane", de: "Bildebene", es: "Plano visual", fr: "Plan image", zh: "影像平面", ja: "映像面", ru: "Плоскость изображения" }),
+      marker: "Image",
+    },
+    {
+      id: "audio",
+      indexLabel: "02",
+      label: getLocaleCopy(locale, { en: "Hi-end Audio", de: "Hi-end Audio", es: "Hi-end Audio", fr: "Hi-end Audio", zh: "Hi-end Audio", ja: "Hi-end Audio", ru: "Люкс аудио" }),
+      title: getLocaleCopy(locale, {
+        en: "Sound, power and material held in one controlled system.",
+        de: "Klang, Leistung und Material in einem kontrollierten System.",
+        es: "Sonido, potencia y materia dentro de un sistema controlado.",
+        fr: "Son, puissance et matière dans un système maîtrisé.",
+        zh: "声音、功率与材料被纳入同一受控系统。",
+        ja: "音、駆動、素材を一つの制御されたシステムに収めます。",
+        ru: "Звук, мощность и материал в одной контролируемой системе.",
+      }),
+      description: getLocaleCopy(locale, {
+        en: "Speakers, electronics and conductors appear as infrastructure for a room, not separate products.",
+        de: "Lautsprecher, Elektronik und Leiter erscheinen als Raum-Infrastruktur.",
+        es: "Altavoces, electrónica y conductores aparecen como infraestructura de sala.",
+        fr: "Enceintes, électronique et conducteurs deviennent une infrastructure de pièce.",
+        zh: "音箱、电子设备与导体成为空间基础设施，而非孤立产品。",
+        ja: "スピーカー、電子機器、導体を空間のインフラとして扱います。",
+        ru: "Колонки, электроника и проводники выглядят как инфраструктура комнаты.",
+      }),
+      href: withLocale("/audio", locale),
+      cta,
+      image: "/images/home/product-series/connected-system-four-plugs.webp",
+      material: getLocaleCopy(locale, { en: "Signal chain", de: "Signalkette", es: "Cadena de señal", fr: "Chaîne signal", zh: "信号链路", ja: "信号系統", ru: "Сигнальная цепь" }),
+      marker: "Sound",
+    },
+    {
+      id: "glass",
+      indexLabel: "03",
+      label: getLocaleCopy(locale, { en: "Living Glass", de: "Living Glass", es: "Living Glass", fr: "Living Glass", zh: "Living Glass", ja: "Living Glass", ru: "Прозрачный дисплей" }),
+      title: getLocaleCopy(locale, {
+        en: "Image surfaces that appear without interrupting the room.",
+        de: "Bildflächen, die erscheinen, ohne den Raum zu brechen.",
+        es: "Superficies de imagen que aparecen sin interrumpir el espacio.",
+        fr: "Surfaces d'image qui apparaissent sans rompre la pièce.",
+        zh: "不打断空间秩序而显现的影像表面。",
+        ja: "空間を遮らずに現れる映像面。",
+        ru: "Поверхности изображения, которые появляются без разрыва интерьера.",
+      }),
+      description: getLocaleCopy(locale, {
+        en: "Transparent display planes stay architectural first and technological second.",
+        de: "Transparente Displayflächen bleiben zuerst architektonisch, danach technologisch.",
+        es: "Los planos transparentes siguen siendo arquitectura antes que tecnología.",
+        fr: "Les plans transparents restent d'abord architecturaux, puis technologiques.",
+        zh: "透明显示平面首先属于建筑，其次才是技术。",
+        ja: "透明ディスプレイ面は、技術以前に建築の一部として存在します。",
+        ru: "Прозрачная плоскость сначала работает как архитектура, а уже потом как технология.",
+      }),
+      href: withLocale("/invisible-display", locale),
+      cta,
+      image: "/images/home/product-series/transparent-screens.webp",
+      material: getLocaleCopy(locale, { en: "Black glass", de: "Black Glass", es: "Black glass", fr: "Black glass", zh: "黑玻璃", ja: "ブラックガラス", ru: "Black glass" }),
+      marker: "Glass",
+    },
+    {
+      id: "hologram",
+      indexLabel: "04",
+      label: getLocaleCopy(locale, { en: "Hologram", de: "Hologramm", es: "Holograma", fr: "Hologramme", zh: "全息", ja: "ホログラム", ru: "Голограмма" }),
+      title: getLocaleCopy(locale, {
+        en: "Spatial presentation for objects, collections and private showrooms.",
+        de: "Räumliche Präsentation für Objekte, Sammlungen und private Showrooms.",
+        es: "Presentación espacial para objetos, colecciones y showrooms privados.",
+        fr: "Présentation spatiale pour objets, collections et showrooms privés.",
+        zh: "面向物件、收藏与私人展厅的空间呈现。",
+        ja: "オブジェクト、コレクション、プライベートショールームのための空間演出。",
+        ru: "Пространственная подача объектов, коллекций и приватных шоурумов.",
+      }),
+      description: getLocaleCopy(locale, {
+        en: "A controlled light volume turns presentation into a quiet spatial plane.",
+        de: "Ein kontrolliertes Lichtvolumen macht Präsentation zu einer stillen Raumebene.",
+        es: "Un volumen de luz controlado convierte la presentación en un plano espacial sereno.",
+        fr: "Un volume lumineux maîtrisé transforme la présentation en plan spatial calme.",
+        zh: "受控光体积让展示成为安静的空间平面。",
+        ja: "制御された光のボリュームが、静かな空間面をつくります。",
+        ru: "Контролируемый объем света превращает презентацию в спокойную пространственную плоскость.",
+      }),
+      href: withLocale("/hologram", locale),
+      cta,
+      image: "/images/home/generated/montelar-nano-banana-video-frame.webp",
+      material: getLocaleCopy(locale, { en: "Light volume", de: "Lichtvolumen", es: "Volumen de luz", fr: "Volume lumineux", zh: "光体积", ja: "光の量感", ru: "Объем света" }),
+      marker: "Depth",
+    },
+    {
+      id: "art",
+      indexLabel: "05",
+      label: getLocaleCopy(locale, { en: "Pictorial Art", de: "Pictorial Art", es: "Pictorial Art", fr: "Pictorial Art", zh: "艺术显示", ja: "ピクトリアルアート", ru: "Живая картина" }),
+      title: getLocaleCopy(locale, {
+        en: "Moving image framed as an architectural object.",
+        de: "Bewegtes Bild als architektonisches Objekt gerahmt.",
+        es: "Imagen en movimiento enmarcada como objeto arquitectónico.",
+        fr: "Image en mouvement cadrée comme objet architectural.",
+        zh: "被框定为建筑物件的动态影像。",
+        ja: "建築的なオブジェクトとして額装された動く映像。",
+        ru: "Движущееся изображение как архитектурный объект.",
+      }),
+      description: getLocaleCopy(locale, {
+        en: "A display becomes a composed surface for slow image presence, not a technical screen.",
+        de: "Ein Display wird zur komponierten Fläche für ruhige Bildpräsenz.",
+        es: "El display se vuelve una superficie compuesta para presencia visual lenta.",
+        fr: "Le display devient une surface composée pour une présence lente de l'image.",
+        zh: "显示设备成为承载缓慢影像存在的构成表面。",
+        ja: "ディスプレイは技術画面ではなく、静かな映像のための構成面になります。",
+        ru: "Дисплей становится собранной поверхностью для медленного присутствия изображения.",
+      }),
+      href: withLocale("/pictorial-art-display", locale),
+      cta,
+      image: "/images/home/product-series/led-seamless.webp",
+      material: getLocaleCopy(locale, { en: "Framed image", de: "Gerahmtes Bild", es: "Imagen enmarcada", fr: "Image cadrée", zh: "框景影像", ja: "額装された映像", ru: "Изображение в раме" }),
+      marker: "Frame",
+    },
+    {
+      id: "exhibition",
+      indexLabel: "06",
+      label: getLocaleCopy(locale, { en: "Exhibition", de: "Ausstellung", es: "Exhibición", fr: "Exposition", zh: "展陈", ja: "展示", ru: "Выставка" }),
+      title: getLocaleCopy(locale, {
+        en: "Embedded interaction for galleries, retail and curated environments.",
+        de: "Eingebaute Interaktion für Galerien, Retail und kuratierte Räume.",
+        es: "Interacción integrada para galerías, retail y entornos curados.",
+        fr: "Interaction intégrée pour galeries, retail et espaces curatoriaux.",
+        zh: "面向画廊、零售与策展空间的嵌入式互动。",
+        ja: "ギャラリー、リテール、キュレーション空間のための埋め込み型インタラクション。",
+        ru: "Встроенное взаимодействие для галерей, retail и кураторских пространств.",
+      }),
+      description: getLocaleCopy(locale, {
+        en: "Touch surfaces and media walls stay flush with the interior logic.",
+        de: "Touchflächen und Media Walls bleiben bündig mit der Innenraumlogik.",
+        es: "Superficies táctiles y muros media quedan alineados con la lógica interior.",
+        fr: "Surfaces tactiles et murs média restent intégrés à la logique intérieure.",
+        zh: "触控表面与媒体墙保持与室内逻辑齐平。",
+        ja: "タッチ面とメディアウォールはインテリアの論理に沿って収まります。",
+        ru: "Сенсорные поверхности и media wall остаются встроенными в логику интерьера.",
+      }),
+      href: withLocale("/exhibition-displays", locale),
+      cta,
+      image: "/images/home/montelar-master-screen-mechanism.webp",
+      material: getLocaleCopy(locale, { en: "Embedded surface", de: "Eingebaute Fläche", es: "Superficie integrada", fr: "Surface intégrée", zh: "嵌入表面", ja: "埋め込み面", ru: "Встроенная поверхность" }),
+      marker: "Touch",
+    },
+  ];
+
+  return (
+    <MotionCatalogPrototype
+      ariaLabel={getLocaleCopy(locale, {
+        en: "Montelar directions",
+        de: "Montelar Richtungen",
+        es: "Direcciones Montelar",
+        fr: "Directions Montelar",
+        zh: "Montelar 方向",
+        ja: "Montelar 領域",
+        ru: "Направления Montelar",
+      })}
+      directions={directions}
+      eyebrow={getLocaleCopy(locale, {
+        en: "The Montelar System",
+        de: "The Montelar System",
+        es: "The Montelar System",
+        fr: "The Montelar System",
+        zh: "The Montelar System",
+        ja: "The Montelar System",
+        ru: "The Montelar System",
+      })}
+      intro={getLocaleCopy(locale, {
+        en: "Six ways to compose image, sound and design into one quiet environment.",
+        de: "Sechs Wege, Bild, Klang und Design zu einer stillen Umgebung zu komponieren.",
+        es: "Seis maneras de componer imagen, sonido y diseño en un entorno sereno.",
+        fr: "Six façons de composer image, son et design dans un environnement calme.",
+        zh: "六种方式，将图像、声音与设计组成一个安静环境。",
+        ja: "画像、音、デザインを一つの静かな環境に構成する六つの方法。",
+        ru: "Шесть способов собрать изображение, звук и дизайн в одну спокойную среду.",
+      })}
+      title={getLocaleCopy(locale, {
+        en: "Catalog as a cinematic system.",
+        de: "Katalog als kinematisches System.",
+        es: "Catálogo como sistema cinematográfico.",
+        fr: "Catalogue comme système cinématique.",
+        zh: "作为电影感系统的目录。",
+        ja: "シネマティックなシステムとしてのカタログ。",
+        ru: "Каталог как кинематографичная система.",
+      })}
+    />
+  );
+}

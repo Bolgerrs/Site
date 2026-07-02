@@ -1,0 +1,23 @@
+[Unit]
+Description=Montelar - preview runtime service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/root/montelar
+Environment="NODE_ENV=production"
+Environment="MONTELAR_PREVIEW_HOST=0.0.0.0"
+Environment="MONTELAR_PREVIEW_PORT=8093"
+Environment="MONTELAR_PREVIEW_RUNTIME=nextjs-app"
+Environment="MONTELAR_PREVIEW_EXTERNAL_MODE=direct-port"
+Environment="MONTELAR_PREVIEW_PUBLIC_URL=http://157.22.194.40:8093/"
+Environment="MONTELAR_PREVIEW_STATIC_DIR=/root/montelar"
+Environment="MONTELAR_PREVIEW_NEXT_APP_DIR=/root/montelar/apps/web"
+ExecStart=/bin/bash /root/montelar/scripts/preview-serve.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

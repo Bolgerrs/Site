@@ -1,0 +1,26 @@
+{
+  "name": "montelar",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm --workspace @montelar/web run dev",
+    "dev:admin": "npm --workspace @montelar/admin run dev",
+    "build": "npm --workspace @montelar/web run build",
+    "build:verify": "npm --workspace @montelar/web run build:verify",
+    "build:admin": "npm --workspace @montelar/admin run build",
+    "lint": "npm --workspace @montelar/web run lint",
+    "lint:admin": "npm --workspace @montelar/admin run lint",
+    "typecheck": "npm --workspace @montelar/web run typecheck",
+    "typecheck:admin": "npm --workspace @montelar/admin run typecheck",
+    "smoke:admin-storage": "npm --workspace @montelar/admin run smoke:storage",
+    "check": "npm run lint && npm run typecheck",
+    "check:frontend": "npm run check && npm run build:verify",
+    "qa:protected-surfaces": "npm --workspace @montelar/web run qa:protected-surfaces",
+    "check:admin": "npm run lint:admin && npm run typecheck:admin && npm run build:admin"
+  },
+  "devDependencies": {
+    "playwright": "^1.51.1"
+  }
+}

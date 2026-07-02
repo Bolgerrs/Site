@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Montelar — High-End Audio</title>
+  <meta name="description" content="Montelar — ultra-premium high-end audio components. Swiss precision, architectural form, lasting value." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#050608;
+      --text:#f4efe6;
+      --muted:#9a958b;
+      --soft:#6a6560;
+      --accent:#c8b18a;
+      --line:rgba(255,255,255,.08);
+      --serif:"Cormorant Garamond", Georgia, serif;
+      --sans:"Inter", sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:var(--sans);
+      font-weight:300;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.6;
+      letter-spacing:.01em;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    
+    .container{max-width:1400px;margin:0 auto;padding:0 40px}
+    
+    /* HEADER */
+    header{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:1000;
+      background:rgba(5,6,8,.92);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-wrap{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      height:80px;
+    }
+    .brand{display:flex;align-items:center;gap:12px;font-size:.85rem;font-weight:500;text-transform:uppercase;letter-spacing:.18em}
+    .brand span{font-family:var(--serif);letter-spacing:.05em}
+    .mark{width:28px;height:28px;border:1px solid rgba(255,255,255,.15);border-radius:50%;position:relative;background:radial-gradient(circle, rgba(200,177,138,.15), transparent)}
+    .mark::before,.mark::after{content:'';position:absolute;border:1px solid rgba(200,177,138,.5);border-radius:50%;inset:5px}
+    .mark::after{inset:10px;border-color:rgba(200,177,138,.7)}
+    
+.nav{display:flex;align-items:center;gap:40px;font-size:.85rem;font-weight:400;color:var(--muted)}
+    .nav a:hover,.nav a.active{color:var(--text)}
+    .nav a.active{border-bottom:1px solid var(--accent);padding-bottom:4px}
+    
+    .nav-item{position:relative}
+    .nav-item:hover .dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+    .dropdown{position:absolute;top:100%;left:-20px;background:#0a0d12;border:1px solid var(--line);padding:24px;min-width:320px;opacity:0;visibility:hidden;transform:translateY(10px);transition:.3s;z-index:100}
+    .dropdown a{display:block;padding:12px 0;border-bottom:1px solid var(--line);font-size:.9rem;color:var(--muted);transition:.25s}
+    .dropdown a:last-child{border:none}
+    .dropdown a:hover{color:var(--text);padding-left:8px}
+    .dropdown .col-name{font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:4px;display:block}
+    .dropdown .col-desc{font-size:.8rem;color:var(--soft)}
+    
+    .menu-toggle{display:none;background:none;border:none;color:var(--text);font-size:24px;cursor:pointer}
+    
+    /* HERO */
+    .hero{padding:160px 0 80px;text-align:center}
+    .hero::before{content:'';position:absolute;top:0;left:0;right:0;height:400px;background:radial-gradient(ellipse at 50% 0%, rgba(200,177,138,.12) 0%, transparent 70%)}
+    .hero-content{position:relative;z-index:1}
+    .hero-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.25em;color:var(--soft);margin-bottom:20px;display:block}
+    .hero h1{font-family:var(--serif);font-size:clamp(3.5rem, 7vw, 6rem);font-weight:400;line-height:1.05;margin-bottom:28px;letter-spacing:-.02em}
+    .hero p{max-width:640px;margin:0 auto 40px;color:var(--muted);font-size:1.1rem;line-height:1.7}
+    .hero-btns{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+    
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 32px;border-radius:4px;font-size:.9rem;font-weight:500;transition:.25s;cursor:pointer}
+    .btn-primary{background:var(--accent);color:#050608;border:1px solid var(--accent)}
+    .btn-primary:hover{background:#dcc090}
+    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--text)}
+    .btn-outline:hover{border-color:var(--accent)}
+    
+    /* SECTIONS */
+    .section{padding:100px 0}
+    .section-header{text-align:center;margin-bottom:60px}
+    .section-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.25em;color:var(--soft);margin-bottom:16px;display:block}
+    .section h2{font-family:var(--serif);font-size:clamp(2rem, 4vw, 3.2rem);font-weight:400;margin-bottom:20px}
+    .section .lead{max-width:700px;margin:0 auto;color:var(--muted)}
+    
+/* BANNERS */
+    .banner{position:relative;padding:120px 0;overflow:hidden;margin-bottom:60px}
+    .banner::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,.8) 100%),radial-gradient(ellipse at 50% 30%, rgba(200,177,138,.08) 0%, transparent 50%);z-index:1}
+    .banner-bg{position:absolute;inset:0;background:linear-gradient(145deg, #1a1f26, #0a0d12)}
+    .banner-content{position:relative;z-index:1;text-align:center;max-width:800px;margin:0 auto}
+    .banner h3{font-family:var(--serif);font-size:clamp(2.5rem, 5vw, 4rem);font-weight:400;margin-bottom:24px}
+    .banner p{font-size:1.08rem;color:var(--muted);margin-bottom:36px;line-height:1.7}
+    
+/* COLLECTIONS GRID */
+    .collections-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:40px;margin-bottom:60px}
+    .collection-card{background:transparent;border:1px solid var(--line);overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+    .collection-img{aspect-ratio:1.2;background:#0a0d12;position:relative;overflow:hidden}
+    .collection-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, transparent 40%, rgba(10,13,18,.9) 100%);z-index:1;pointer-events:none}
+    .collection-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .collection-body{padding:32px;position:relative}
+    .collection-body::before{content:'';position:absolute;top:0;left:32px;width:40px;height:2px;background:var(--accent);opacity:0;transition:opacity .3s ease}
+    .collection-tag{font-size:.65rem;text-transform:uppercase;letter-spacing:.2em;color:var(--soft);margin-bottom:10px;display:block}
+    .collection-card h4{font-family:var(--serif);font-size:1.5rem;font-weight:400;margin-bottom:14px}
+    .collection-card p{font-size:.95rem;color:var(--muted);margin-bottom:24px;line-height:1.6}
+    .collection-link{font-size:.85rem;color:var(--accent);display:inline-flex;align-items:center;gap:6px}
+    .collection-link:hover{gap:10px}
+    
+    /* INFO SECTIONS */
+    .info-section{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:80px}
+    .info-img{aspect-ratio:1.3;background:#0a0d12;border:1px solid var(--line);border-radius:4px;box-shadow:0 8px 30px rgba(0,0,0,.3);position:relative;overflow:hidden}
+    .info-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, transparent 0%, rgba(5,6,8,.8) 100%);z-index:1;pointer-events:none}
+    .info-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .info-content{padding-right:40px}
+    .info-content .section-label{display:block;margin-bottom:12px}
+    .info-content h3{font-family:var(--serif);font-size:clamp(1.8rem, 3vw, 2.4rem);font-weight:400;margin-bottom:20px}
+    .info-content p{color:var(--muted);margin-bottom:16px;font-size:.98rem;line-height:1.7}
+    
+    /* STATS */
+    .stats-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:30px;margin-bottom:80px}
+    .stat-box{background:#0a0d12;border:1px solid var(--line);padding:40px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.2);transition:border-color .3s ease}
+    .stat-num{font-family:var(--serif);font-size:2.8rem;color:var(--accent);margin-bottom:12px}
+    .stat-box h4{font-size:.95rem;font-weight:500;margin-bottom:8px}
+    .stat-box p{font-size:.85rem;color:var(--muted)}
+    
+    /* CTA SECTION */
+    .cta-section{background:#0a0d12;border:1px solid var(--line);padding:80px;text-align:center;border-radius:4px;box-shadow:0 8px 40px rgba(0,0,0,.3)}
+    .cta-section h3{font-family:var(--serif);font-size:2.2rem;font-weight:400;margin-bottom:20px}
+    .cta-section p{color:var(--muted);margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto}
+    
+    /* FOOTER */
+    footer{background:#030405;border-top:1px solid var(--line);padding:60px 0 40px}
+    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+    .footer-brand{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+    .footer-brand .brand{font-size:.8rem}
+    .footer-about{font-size:.9rem;color:var(--muted);line-height:1.7;max-width:280px}
+    .footer h5{font-size:.8rem;text-transform:uppercase;letter-spacing:.15em;margin-bottom:20px;color:var(--soft)}
+    .footer-links{display:flex;flex-direction:column;gap:12px}
+    .footer-links a{font-size:.88rem;color:var(--muted)}
+    .footer-links a:hover{color:var(--text)}
+    .footer-bottom{text-align:center;padding-top:30px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted)}
+    
+    /* ANIMATIONS */
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    .fade-in{opacity:0;animation:fadeInUp .8s ease forwards}
+    .fade-in-delay-1{animation-delay:.15s}
+    .fade-in-delay-2{animation-delay:.3s}
+    .fade-in-delay-3{animation-delay:.45s}
+    
+    /* Scroll reveal - like original site */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+    .reveal.show{opacity:1;transform:none}
+    
+    .hero>*{opacity:0;animation:fadeInUp .8s ease forwards}
+    .hero>*:nth-child(1){animation-delay:.1s}
+    .hero>*:nth-child(2){animation-delay:.2s}
+    .hero>*:nth-child(3){animation-delay:.35s}
+    .hero>*:nth-child(4){animation-delay:.5s}
+    
+    .banner>*{opacity:0;animation:fadeInUp .8s ease forwards}
+    .banner>*:nth-child(1){animation-delay:.1s}
+    .banner>*:nth-child(2){animation-delay:.2s}
+    .banner>*:nth-child(3){animation-delay:.35s}
+    .banner>*:nth-child(4){animation-delay:.5s}
+    
+    .collection-card,.stat-box{opacity:0;animation:fadeInUp .6s ease forwards}
+    .collections-grid .collection-card:nth-child(1){animation-delay:.1s}
+    .collections-grid .collection-card:nth-child(2){animation-delay:.2s}
+    .collections-grid .collection-card:nth-child(3){animation-delay:.3s}
+    .stats-grid .stat-box:nth-child(1){animation-delay:.1s}
+    .stats-grid .stat-box:nth-child(2){animation-delay:.2s}
+    .stats-grid .stat-box:nth-child(3){animation-delay:.3s}
+    
+    .info-section{opacity:0;animation:fadeInUp .8s ease forwards;animation-delay:.2s}
+    
+    /* HOVER */
+    .btn-primary:hover{background:#dcc090}
+    .btn-outline:hover{border-color:var(--accent)}
+    
+    .collection-card{transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+    .collection-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.4);border-color:var(--accent)}
+    .collection-card:hover .collection-body::before{opacity:1}
+    .collection-link{transition:gap .25s ease;color:var(--accent)}
+    .collection-link:hover{gap:12px}
+    
+    .stat-box{transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+    .stat-box:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.35);border-color:var(--accent)}
+    
+    .footer-links a{transition:color .25s ease}
+    .footer-links a:hover{color:var(--text)}
+    
+    /* RESPONSIVE */
+    @media(max-width:1100px){
+      .nav{display:none}
+      .menu-toggle{display:block}
+      .collections-grid{grid-template-columns:1fr}
+      .info-section{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:768px){
+      .container{padding:0 24px}
+      .hero{padding:140px 0 60px}
+      .section{padding:60px 0}
+      .banner{padding:80px 0}
+      .stats-grid{grid-template-columns:1fr}
+      .cta-section{padding:40px 24px}
+      .footer-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand">
+        <span class="mark"></span>
+        <span>Montelar</span>
+      </a>
+      
+      <nav class="nav">
+        <div class="nav-item">
+          <a href="products.html">Products</a>
+          <div class="dropdown">
+            <a href="product-monolith.html">
+              <span class="col-name">Monolith</span>
+              <span class="col-desc">Reference — флагман</span>
+            </a>
+            <a href="product-linea.html">
+              <span class="col-name">Linea & Signal</span>
+              <span class="col-desc">Premium — баланс</span>
+            </a>
+            <a href="product-arc.html">
+              <span class="col-name">Arc & Meridian</span>
+              <span class="col-desc">Classic — вход в high-end</span>
+            </a>
+            <a href="product-cables.html">
+              <span class="col-name">Cables</span>
+              <span class="col-desc">Кабели и аксессуары</span>
+            </a>
+          </div>
+        </div>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      
+      <button class="menu-toggle">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-content">
+        <span class="hero-label">Breaking Boundaries</span>
+        <h1>Architecture of Sound</h1>
+        <p>
+          Montelar создаёт ultra-premium аудиокомпоненты, где швейцарская точность, 
+          архитектурная форма и долговечная ценность образуют единое целое.
+        </p>
+        <div class="hero-btns">
+          <a href="products.html" class="btn btn-primary">Montelar Collection</a>
+          <a href="contact.html" class="btn btn-outline">Contact Montelar</a>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <!-- COLLECTIONS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Three Collections</span>
+          <h2>Коллекции Montelar</h2>
+          <p class="lead">Три уровня совершенства — от референсного до входного. Каждая коллекция создана для определённой системы.</p>
+        </div>
+
+        <div class="collections-grid">
+<article class="collection-card">
+            <div class="collection-img" style="background: linear-gradient(145deg, #1a1f26, #0a0d12);"></div>
+            <div class="collection-body">
+              <span class="collection-tag">Reference</span>
+              <h4>Monolith</h4>
+              <p>Референсное усиление для систем высшего класса. Максимальный контроль, масса и тишина.</p>
+              <a href="products.html" class="collection-link">Explore →</a>
+            </div>
+          </article>
+
+          <article class="collection-card">
+            <div class="collection-img" style="background: linear-gradient(145deg, #1a1f26, #0a0d12);"></div>
+            <div class="collection-body">
+              <span class="collection-tag">Premium</span>
+              <h4>Linea & Signal</h4>
+              <p>Интегральные усилители и ЦАПы для систем высокого уровня. Баланс точности и музыкальности.</p>
+              <a href="products.html" class="collection-link">Explore →</a>
+            </div>
+          </article>
+
+          <article class="collection-card">
+            <div class="collection-img" style="background: linear-gradient(145deg, #1a1f26, #0a0d12);"></div>
+            <div class="collection-body">
+              <span class="collection-tag">Classic</span>
+              <h4>Arc & Meridian</h4>
+              <p>Акустика и цифровые источники для первого погружения в high-end. Точность без компромиссов.</p>
+              <a href="products.html" class="collection-link">Explore →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <!-- PHILOSOPHY -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">The Brand</span>
+          <h2>Тихая убедительность</h2>
+          <p class="lead">Три слова, которые определяют всё: Precision. Form. Permanence.</p>
+        </div>
+
+        <div class="stats-grid reveal">
+          <div class="stat-box">
+            <div class="stat-num">01</div>
+            <h4>Precision</h4>
+            <p>Точность в каждой детали</p>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">02</div>
+            <h4>Form</h4>
+            <p>Форма как дисциплина</p>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">03</div>
+            <h4>Permanence</h4>
+            <p>Долговечная ценность</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFO -->
+    <section class="section">
+      <div class="container">
+        <div class="info-section reveal">
+          <div class="info-img" style="background: linear-gradient(145deg, #1a1f26, #0a0d12);"></div>
+          <div class="info-content">
+            <span class="section-label">Precision</span>
+            <h3>Точность в каждой детали</h3>
+            <p>Референсная инженерия, ориентированная на ясность, контроль, устойчивую сцену и низкий воспринимаемый шум.</p>
+            <p>Каждый компонент Montelar создаётся с пониманием того, что качество звука определяется не только схемотехникой, но и конструкцией, материалами и тем, как устройство ощущается в долгом владении.</p>
+          </div>
+        </div>
+
+        <div class="info-section reveal">
+          <div class="info-content">
+            <span class="section-label">Form</span>
+            <h3>Форма подчинена звуку</h3>
+            <p>Дизайн, основанный не на декоре, а на дисциплине. Каждая линия и каждый материал оправданы.</p>
+            <p>Мы не создаём визуальный шум. Наша форма — это контролируемая геометрия, тактильные интерфейсы и отделки, выбранные за глубину, долговечность и визуальную тишину.</p>
+          </div>
+          <div class="info-img" style="background: linear-gradient(145deg, #1a1f26, #0a0d12);"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-section reveal">
+          <h3>Ask away</h3>
+          <p>Свяжитесь с нами для консультации по подбору системы или организации демонстрации.</p>
+          <div class="hero-btns" style="justify-content:center">
+            <a href="contact.html" class="btn btn-primary">Contact us</a>
+            <a href="about.html" class="btn btn-outline">About Montelar</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <span class="mark"></span>
+            <span class="brand">Montelar</span>
+          </div>
+          <p class="footer-about">
+            Montelar создаёт ultra-premium аудиокомпоненты с швейцарской точностью, 
+            архитектурной формой и долговечной ценностью.
+          </p>
+        </div>
+        
+        <div>
+          <h5>Products</h5>
+          <div class="footer-links">
+            <a href="products.html">Monolith</a>
+            <a href="products.html">Linea & Signal</a>
+            <a href="products.html">Arc & Meridian</a>
+            <a href="products.html">Cables</a>
+          </div>
+        </div>
+        
+        <div>
+          <h5>Brand</h5>
+          <div class="footer-links">
+            <a href="about.html">About</a>
+            <a href="about.html">Technologies</a>
+            <a href="about.html">Craftsmanship</a>
+          </div>
+        </div>
+        
+        <div>
+          <h5>Contact</h5>
+          <div class="footer-links">
+            <a href="contact.html">Contact</a>
+            <a href="contact.html">Find a Dealer</a>
+            <a href="mailto:info@montelar.audio">info@montelar.audio</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2024 Montelar. All Rights Reserved. Architecture of Sound.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      document.querySelector('.nav').style.display = document.querySelector('.nav').style.display === 'flex' ? 'none' : 'flex';
+      document.querySelector('.nav').style.position = 'absolute';
+      document.querySelector('.nav').style.top = '90px';
+      document.querySelector('.nav').style.left = '0';
+      document.querySelector('.nav').style.right = '0';
+      document.querySelector('.nav').style.background = '#050608';
+      document.querySelector('.nav').style.padding = '24px';
+      document.querySelector('.nav').style.flexDirection = 'column';
+      document.querySelector('.nav').style.gap = '20px';
+    });
+    
+    // Scroll reveal - like original site
+    function reveal() {
+      var reveals = document.querySelectorAll('.reveal');
+      for (var i = 0; i < reveals.length; i++) {
+        var windowheight = window.innerHeight;
+        var revealtop = reveals[i].getBoundingClientRect().top;
+        var revealpoint = 120;
+        if (revealtop < windowheight - revealpoint) {
+          reveals[i].classList.add('show');
+        }
+      }
+    }
+    window.addEventListener('scroll', reveal);
+    reveal(); // Run on load
+  </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+/* Tailwind v4 АДДИТИВНО: preflight НЕ импортируем (не сносим globals.css) */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+/* явный источник классов — авто-скан в git-worktree не цепляется */
+@source "../**/*.{tsx,ts,jsx,js}";
+@theme {
+  --color-gold: #c8b18a;
+  --color-gold-bright: #dcc090;
+  --color-brown: #6f4a2e;
+  --color-cream: #fffbf5;
+  --color-warmblack: #0c0e12;
+}

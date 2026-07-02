@@ -1,0 +1,41 @@
+import type { Metadata, Viewport } from "next";
+import type { ReactNode } from "react";
+import { SiteShell } from "@/components/site-shell";
+import { montelarDesignTokens } from "@/lib/design/tokens";
+import { getRequestLocale } from "@/lib/request-locale";
+import { buildRootMetadata } from "@/lib/seo/metadata";
+import "./globals.css";
+
+export const metadata: Metadata = buildRootMetadata();
+
+export const viewport: Viewport = {
+  themeColor: montelarDesignTokens.color.sand,
+};
+
+type RootLayoutProps = {
+  children: ReactNode;
+};
+
+export default async function RootLayout({ children }: RootLayoutProps) {
+  const locale = await getRequestLocale();
+
+  return (
+    <html className="notranslate" lang={locale} translate="no">
+      <head>
+        <meta name="google" content="notranslate" />
+        <meta name="yandex" content="notranslate" />
+        <link
+          rel="preload"
+          as="image"
+          href="/images/home/product-scene/hero-upscaled-logo-ai-slogan-1920-20260613v2.webp"
+          imageSrcSet="/images/home/product-scene/hero-upscaled-logo-ai-slogan-960-20260613v2.webp 960w, /images/home/product-scene/hero-upscaled-logo-ai-slogan-1440-20260613v2.webp 1440w, /images/home/product-scene/hero-upscaled-logo-ai-slogan-1920-20260613v2.webp 1920w, /images/home/product-scene/hero-upscaled-logo-ai-slogan-2880-20260613v2.webp 2880w, /images/home/product-scene/hero-upscaled-logo-ai-slogan-3840-20260613v2.webp 3840w"
+          imageSizes="100vw"
+          fetchPriority="high"
+        />
+      </head>
+      <body>
+        <SiteShell locale={locale}>{children}</SiteShell>
+      </body>
+    </html>
+  );
+}

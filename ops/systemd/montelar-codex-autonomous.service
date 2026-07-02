@@ -1,0 +1,18 @@
+[Unit]
+Description=Montelar - Codex continuous autonomous loop
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/root/montelar
+Environment="PATH=/usr/local/bin:/usr/bin:/bin"
+Environment="CODEX_COOLDOWN_SEC=30"
+ExecStart=/bin/bash /root/montelar/scripts/codex-loop.sh
+Restart=always
+RestartSec=30
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

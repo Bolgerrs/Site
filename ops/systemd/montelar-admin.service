@@ -1,0 +1,23 @@
+[Unit]
+Description=Montelar - Payload admin runtime service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/root/montelar
+EnvironmentFile=-/etc/montelar/admin.env
+Environment="NODE_ENV=production"
+Environment="MONTELAR_ADMIN_APP_DIR=/root/montelar/apps/admin"
+Environment="MONTELAR_ADMIN_HOST=127.0.0.1"
+Environment="MONTELAR_ADMIN_PORT=3002"
+Environment="NEXT_PUBLIC_ADMIN_URL=http://89.150.34.66:3001"
+Environment="NEXT_PUBLIC_SITE_URL=http://89.150.34.66:8093"
+Environment="MONTELAR_UPLOADS_DIR=/root/montelar/apps/admin/.uploads"
+ExecStart=/bin/bash /root/montelar/scripts/admin-serve.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
