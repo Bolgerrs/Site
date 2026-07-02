@@ -1,4 +1,4 @@
-name: Deploy Montelar static site to GitHub Pages
+name: Publish Montelar static site
 
 on:
   push:
@@ -10,26 +10,21 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: montelar-pages
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  publish:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build site artifact
+      - name: Build static site folder
         run: |
           rm -rf _site
           mkdir -p _site
@@ -39,11 +34,10 @@ jobs:
           touch _site/.nojekyll
           find _site -maxdepth 2 -type f | sort
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Publish to gh-pages branch
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: _site
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          branch: gh-pages
+          folder: _site
+          clean: true
+          single-commit: true
